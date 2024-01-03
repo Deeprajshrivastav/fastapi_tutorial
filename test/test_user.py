@@ -15,15 +15,7 @@ def test_create_user(client):
     res = client.post('/user', json={'email': 'test@example.com', 'password': '123456'})
     UserOut(**res.json())
     assert res.status_code == 201
+
+def test_login_user(client):
     res = client.post('/login', data={'username': 'test@example.com', 'password': '123456'})
-    #UserOut(**res.json())
-    print(res.json())
-
-    assert res.status_code == 200
-
-def test_create1_user(client):
-    res = client.post('/login', data={'username': 'test@example.com', 'password': '123456'})
-    #UserOut(**res.json())
-    print(res.json())
-
     assert res.status_code == 200

@@ -1,4 +1,4 @@
- from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient
 from app.main import app
 from app import models
 import pytest
@@ -67,16 +67,13 @@ def authorized_client(client, token):
 @pytest.fixture
 def create_test_post(test_user, session):
     post_data = []
-    print(type(session))
     for i in range(2, 12):
         post = {'title': f'title {i}', 'content': f'content {i}', 'user_id': test_user['id']}
-        print(test_user['id'])
         post_data.append(post)
     def create_post(post):
         return models.Post(**post)
     posts = map(create_post, post_data)
-    posts = list(posts)
-    #print(posts)
-    
     session.add_all(posts)
     session.commit()
+    posts = session.query(models.Post).all()
+    return posts

@@ -7,8 +7,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          postgres_password: 12345
-          postgres_DB: fastapi_test
+          POSTGRES_PASSWORD: 12345
+          POSTGRES_DB: fastapi_test
         ports:
         - 5432:5432
         options: >-

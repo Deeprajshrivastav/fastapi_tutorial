@@ -43,5 +43,24 @@ def test_post(authorized_client, title, content, published):
     created_post = schemas.Post(**response.json())
     assert created_post.title == title
     assert created_post.content == content
-    assert created_post.published == published
+    assert created_post.published == published 
+
+def test_delete_post(authorized_client, create_test_post):
+    response = authorized_client.delete(f'/post/{create_test_post[0].id}')
+    response.status_code = 204
     
+def test_authorized_client_delete_post(client, create_test_post):
+    response = client.delete(f'/post/{create_test_post[0].id}')
+    response.status_code = 403
+
+# def test_update_post(authorized_client, create_test_post):
+#     data = {
+#         "title": "update tittle",
+#         "content": "updated content",
+#         "id": create_test_post[0].id
+#     }
+#     print(create_test_post[0].id)
+#     response = authorized_client.put("/post/{}".format(create_test_post[0].id), json=data)
+#     # # print(response.status_code)
+#     print(response.json())
+#     pass

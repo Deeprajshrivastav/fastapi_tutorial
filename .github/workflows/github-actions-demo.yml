@@ -1,0 +1,13 @@
+name: post app
+on:
+  push:
+    branches:
+    - "main"
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+     -name: pulling git repo
+      uses: action/checkout@v2
+
+     

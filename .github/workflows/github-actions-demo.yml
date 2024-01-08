@@ -6,5 +6,7 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
+      - name: install python packages
+        uses: actions/setup-python@v2
 
      

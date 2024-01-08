@@ -3,7 +3,13 @@ on: [push]
 jobs:
   job1:
     runs-on: ubuntu-latest
+    services: 
+      postgres:
+        image: postgres
+        env:
+          postgres_password: "12345"
     steps:
+      
       - name: pulling git repo
         uses: actions/checkout@v2
       - name: install python packages

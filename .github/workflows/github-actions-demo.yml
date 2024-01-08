@@ -35,8 +35,6 @@ jobs:
         run: |
           pip install pytest
           ls
-          cd app
-          ls
           pytest
           
 

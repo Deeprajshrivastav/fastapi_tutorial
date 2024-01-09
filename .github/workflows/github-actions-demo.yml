@@ -38,6 +38,6 @@ jobs:
           pytest
           
 
-          # run: | 
-          #   pip install pytest
-          #   pytest
+          run: | 
+            pip install pytest
+            pytest
